@@ -54,7 +54,7 @@ qa_prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-documents = TextLoader(r".\docs\faq.txt").load()
+documents = TextLoader("./docs/faq.txt").load()
 text_splitter = CharacterTextSplitter(chunk_size=100, chunk_overlap=0)
 splits = text_splitter.split_documents(documents)
 vectorstore = Chroma.from_documents(splits, OpenAIEmbeddings(api_key=st.secrets["openai_api_key"]))
